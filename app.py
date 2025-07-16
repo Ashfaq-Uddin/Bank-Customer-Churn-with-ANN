@@ -18,16 +18,27 @@ with open('scaler.pkl','rb') as file:
 
 st.title('Customer Churn Prediction')
 
-geography = st.selectbox('Geography',onehot_encode_geography.categories_[0])
-gender = st.selectbox('Gender',label_encode_gender.classes_)
-age = st.slider('Age', 18, 92)
-balance = st.number_input('Balance')
-credit_score = st.number_input('Credit Score')
-estimated_salary = st.number_input('Estimated Salary')
-tenure = st.slider('Tenure', 0, 10)
-num_of_products = st.slider('Number of Products', 1, 4)
-has_cr_card = st.selectbox('Has Credit Card', [0, 1])
-is_active_member = st.selectbox('Is Active Member', [0, 1])
+# geography = st.selectbox('Geography',onehot_encode_geography.categories_[0])
+# gender = st.selectbox('Gender',label_encode_gender.classes_)
+# age = st.slider('Age', 18, 92)
+# balance = st.number_input('Balance')
+# credit_score = st.number_input('Credit Score')
+# estimated_salary = st.number_input('Estimated Salary')
+# tenure = st.slider('Tenure', 0, 10)
+# num_of_products = st.slider('Number of Products', 1, 4)
+# has_cr_card = st.selectbox('Has Credit Card', [0, 1])
+# is_active_member = st.selectbox('Is Active Member', [0, 1])
+
+geography = st.selectbox('Geography', onehot_encode_geography.categories_[0], key='geo')
+gender = st.selectbox('Gender', label_encode_gender.classes_, key='gender')
+age = st.slider('Age', 18, 92, key='age')
+balance = st.number_input('Balance', key='balance')
+credit_score = st.number_input('Credit Score', key='credit_score')
+estimated_salary = st.number_input('Estimated Salary', key='salary')
+tenure = st.slider('Tenure', 0, 10, key='tenure')
+num_of_products = st.slider('Number of Products', 1, 4, key='num_products')
+has_cr_card = st.selectbox('Has Credit Card', [0, 1], key='has_card')
+is_active_member = st.selectbox('Is Active Member', [0, 1], key='active_member')
 
 input_data = pd.DataFrame({
     'CreditScore':[credit_score],
